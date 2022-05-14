@@ -6,6 +6,6 @@ export const loginCall = async (userCredentials, dispatch) => {
     const res = await axios.post("auth/login", userCredentials);
     dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
   } catch (error) {
-    dispatch({ type: "LOGIN_FAILURE", payload: res.error });
+    dispatch({ type: "LOGIN_FAILURE", payload: error });
   }
 };

@@ -1,6 +1,38 @@
-import React from "react";
+import axios from "axios";
+import React, { useContext, useRef } from "react";
+import { loginCall } from "../../apiCalls";
+import { AuthContext } from "../../context/AuthContext";
 
 const Register = () => {
+  const email = useRef();
+  const password = useRef();
+  const passwordAgain = useRef();
+  const username = useRef();
+  const fullname = useRef();
+
+  const { user, isFetching, error, dispatch } = useContext(AuthContext);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    if (passwordAgain.current.value != password.current.value) {
+      passwordAgain.current.setCustomValidity("Password don't match!");
+    } else {
+      const user = {
+        username: username.current.value,
+        email: email.current.value,
+        password: password.current.value,
+        fullname: fullname.current.value,
+      };
+      try {
+        await axios.post("/auth/register", user);
+        console.log("user has been created");
+      } catch (error) {
+        console.log(error);
+      }
+    }
+  };
+
+  console.log(user);
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-brown">
       <div className="max-w-md w-full space-y-8">
@@ -9,12 +41,38 @@ const Register = () => {
             Cookedge
           </h1>
           <h2 className="mt-6 text-center text-2xl font-normal text gray-700">
-            Sign in to your account
+            Sign up to your account
           </h2>
         </div>
-        <form action="#" className="mt-8 space-y-6" method="submit">
+        <form action="#" className="mt-8 space-y-6" onSubmit={handleClick}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-d shadow-sm -space-y-px">
+            <div>
+              <label htmlFor="email-address" className="sr-only">
+                Fullname
+              </label>
+              <input
+                type="text"
+                autoComplete="text"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Fullname"
+                ref={fullname}
+              />
+            </div>
+            <div>
+              <label htmlFor="email-address" className="sr-only">
+                Username
+              </label>
+              <input
+                type="text"
+                autoComplete="text"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Username"
+                ref={username}
+              />
+            </div>
             <div>
               <label htmlFor="email-address" className="sr-only">
                 Email address
@@ -25,8 +83,9 @@ const Register = () => {
                 name="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Email address"
+                ref={email}
               />
             </div>
             <div>
@@ -39,8 +98,24 @@ const Register = () => {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                 placeholder="Password"
+                minLength={6}
+                ref={password}
+              />
+            </div>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password Again
+              </label>
+              <input
+                type="password"
+                autoComplete="current-password"
+                required
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                placeholder="Password Again"
+                minLength={6}
+                ref={passwordAgain}
               />
             </div>
             <div className="flex items-center justify-between">
@@ -75,8 +150,16 @@ const Register = () => {
               className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
-              Sign in
+              Create new account
             </button>
+            <div className="text-m mt-8 justify-center items-center">
+              <a
+                href="/login"
+                className="font-medium text-indigo-600 hover:text-indigo-500 text-center items-center justify-center "
+              >
+                Log in account
+              </a>
+            </div>
           </div>
         </form>
       </div>
