@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const helmet = require("helmet");
 const dotenv = require("dotenv");
 
+const cors = require("cors");
 const authRoute = require("./routes/auth.js");
 const postRoute = require("./routes/posts.js");
 const userRoute = require("./routes/users.js");
@@ -11,6 +12,8 @@ dotenv.config();
 
 // Setup express
 const app = express();
+
+app.use(cors());
 
 // Setup mongodb using mongoose
 mongoose.connect(
