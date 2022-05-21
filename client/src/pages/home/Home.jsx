@@ -62,9 +62,35 @@ const Home = (props) => {
             />
           </form>
         </div>
-        <p className=" flex justify-center items-center my-6 text-center font-medium text-lg">
+        <p className=" flex justify-center items-center my-6 text-center text-2xl">
           Categories
         </p>
+        <div className="flex mx-auto justify-center my-7  ">
+          <div className="flex-col mr-11 items-center">
+            <div className="bg-white object-cover rounded-full p-3">
+              <img src={PF + "indonesia-flag.png"}></img>
+            </div>
+            <p>Indonesia</p>
+          </div>
+          <div className="flex-col mr-11 flex items-center">
+            <div className="bg-white object-cover rounded-full p-3">
+              <img src={PF + "usa-flag.png"}></img>
+            </div>
+            <p>Western</p>
+          </div>
+          <div className="flex-col mr-11 items-center flex">
+            <div className="bg-white object-cover rounded-full p-3">
+              <img src={PF + "china-flag.png"}></img>
+            </div>
+            <p>China</p>
+          </div>
+          <div className="flex-col mr-11 items-center flex">
+            <div className="bg-white object-cover rounded-full p-3">
+              <img src={PF + "korea-flag.png"}></img>
+            </div>
+            <p>Korean</p>
+          </div>
+        </div>
         <div>
           <div className=" flex flex-col bg-white rounded-lg w-[65%] mx-auto h-[42vh] shadow-md">
             <div className="md:px-9 py-3 px-14">
