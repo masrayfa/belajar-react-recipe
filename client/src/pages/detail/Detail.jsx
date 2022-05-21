@@ -4,7 +4,7 @@ import { detailState } from "../../atoms/detailAtom";
 import axios from "axios";
 
 const Detail = () => {
-  return <div>Detail</div>;
+  return <div className="">Detail</div>;
 };
 
 export default Detail;

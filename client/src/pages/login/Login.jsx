@@ -29,7 +29,7 @@ const Login = () => {
               placeholder="email"
               type="email"
               required
-              className="loginInput bg-transparent placeholder-white text-white"
+              className="loginInput masukLogin bg-transparent placeholder-white text-white"
               ref={email}
             />
             <input
