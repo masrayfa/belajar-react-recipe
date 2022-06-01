@@ -12,6 +12,7 @@ import Login from "./pages/login/Login";
 import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { RecoilRoot } from "recoil";
+import Detail from "./pages/detail/Detail";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -20,7 +21,7 @@ function App() {
     <RecoilRoot>
       <Router>
         <Routes>
-          <Route exact path="/" element={user ? <Home /> : <Register />} />
+          <Route exact path="/" element={<Home />} />
           <Route
             path="/register"
             element={user ? <Navigate to="/" /> : <Register />}
@@ -28,6 +29,10 @@ function App() {
           <Route
             path="/login"
             element={user ? <Navigate to="/" /> : <Login />}
+          />
+          <Route
+            path="/detail"
+            element={user ? <Navigate to="/" /> : <Detail />}
           />
         </Routes>
       </Router>

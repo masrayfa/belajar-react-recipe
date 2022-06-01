@@ -34,18 +34,21 @@ mongoose.connect(
 app.use(express.json());
 app.use(helmet());
 
-app.use("/images", express.static(path.join(__dirname, "public/images")));
+app.use(
+  "/images",
+  express.static(path.join(__dirname, "../client/public/assets"))
+);
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, "public/images");
+    cb(null, "../client/public/assets");
   },
   filename: (req, file, cb) => {
     cb(null, file.originalname);
   },
 });
 
-const upload = multer({ storage });
+const upload = multer({ storage: storage });
 app.post("/api/upload", upload.single("file"), (req, res) => {
   try {
     return res.status(200).json("file uploaded successfully");

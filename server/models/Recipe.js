@@ -11,11 +11,6 @@ const RecipeSchema = new mongoose.Schema(
       required: true,
       max: 20,
     },
-    desc: {
-      type: String,
-      required: true,
-      min: 6,
-    },
     img: {
       type: String,
     },
@@ -24,10 +19,6 @@ const RecipeSchema = new mongoose.Schema(
       required: true,
     },
     ingredients: {
-      type: String,
-      required: true,
-    },
-    tools: {
       type: String,
       required: true,
     },

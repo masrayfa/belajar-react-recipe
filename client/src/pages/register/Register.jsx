@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useRef } from "react";
-import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 const Register = () => {
   const email = useRef();
@@ -152,14 +152,13 @@ const Register = () => {
               <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
               Create new account
             </button>
-            <div className="text-m mt-8 justify-center items-center">
-              <a
-                href="/login"
-                className="font-medium text-indigo-600 hover:text-indigo-500 text-center items-center justify-center "
-              >
-                Log in account
-              </a>
-            </div>
+            <Link to="/login">
+              <div className=" transition text-m mt-8 justify-center items-center mx-auto flex cursor-pointer hover:bg-indigo-200 w-32 rounded-md h-11">
+                <span className="font-medium  transition text-indigo-600  text-center items-center justify-center ">
+                  Log in account
+                </span>
+              </div>
+            </Link>
           </div>
         </form>
       </div>
