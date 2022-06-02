@@ -32,8 +32,8 @@ function App() {
             element={user ? <Navigate to="/" /> : <Login />}
           />
           <Route
-            path="/baca"
-            element={user ? <Navigate to="/" /> : <Baca />}
+            path="/baca/:id"
+            element={user ? <Baca /> : <Navigate to="/" />}
           />
           <Route
             path="/detail"
