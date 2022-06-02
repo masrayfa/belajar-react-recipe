@@ -9,6 +9,7 @@ import axios from "axios";
 import { modalState } from "../../atoms/modalAtom";
 import Modal from "../../components/modal/Modal";
 import { CircularProgress } from "@mui/material";
+import './home.css'
 
 const Home = (props) => {
   const PF = process.env.REACT_APP_PUBLIC_FOLDER;
@@ -39,14 +40,13 @@ const Home = (props) => {
   const categoriesIcon = 4;
 
   return (
-    <div className="bg-[#f6eedf] h-screen w-screen overflow-visible">
-      <header className="pb-14">
-        <div className="bg-white flex items-center drop-shadow justify-between">
-          <h1 className="text-[#d63447] text-4xl font-black m-7">Cookedge</h1>
-          <div className="justify-center space-x-5 items-center pr-16 ">
+    <div className="bg-cream h-screen w-screen overflow-visible">
+      <header className="flex justify-between items-center py-3 px-20 border-b-2 bg-white">
+          <div className="font-bowlby text-3xl text-pink font-black">COOKEDGE</div>
+          <div className="justify-center space-x-5 items-center">
             {user ? (
               <button
-                className="font-medium text-xl"
+                className="text-md py-1 px-4 font-semibold"
                 onClick={() => {
                   return setShowModal(true);
                 }}
@@ -56,33 +56,33 @@ const Home = (props) => {
             ) : null}
 
             {user ? (
-              <button className=" rounded-full outline outline-2  outline-[#d63447]  text-black font-medium px-3 py-1 text-xl ">
-                Logout
+              <button className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink">
+                Log Out
               </button>
             ) : (
               <Link to="/register">
-                <button className=" rounded-full outline outline-2  outline-[#d63447]  text-black font-medium px-3 py-1 text-xl ">
-                  Sign up
+                <button className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink">
+                  Sign Up
                 </button>
               </Link>
             )}
 
             {user ? (
-              <button className="rounded-full outline outline-2  items-center justify-center  text-white bg-[#d63447] font-medium px-3 py-1 text-xl ">
+              <div className="bg-pink text-md py-1 px-4 text-white font-semibold">
                 {user.username}
-              </button>
+              </div>
             ) : (
               <Link to="/login">
-                <button className="rounded-full outline outline-2  items-center justify-center  text-white bg-[#d63447] font-medium px-3 py-1 text-xl ">
-                  Log in
+                <button className="bg-pink text-md py-1 px-4 text-white font-semibold rounded-full border-2 border-pink">
+                  Log In
                 </button>
               </Link>
             )}
           </div>
-        </div>
       </header>
+
       <main>
-        <div className="bg-[#d63447] rounded-lg flex w-[45vw] mx-auto h-14">
+        <div className="bg-pink my-10 rounded-lg flex w-[40vw] mx-auto h-14">
           <form className="flex ml-6 items-center ">
             <FiSearch className="text-white"></FiSearch>
             <input
@@ -92,117 +92,161 @@ const Home = (props) => {
             />
           </form>
         </div>
-        <p className=" flex justify-center items-center my-6 text-center text-2xl">
+        
+        <p className="flex justify-center text-md">
           Categories
         </p>
-        <div className="flex mx-auto justify-center my-7  ">
-          <div className="flex-col mr-11 items-center">
-            <div className="bg-white object-cover rounded-full p-3">
+        <div className="flex mx-auto justify-center mt-2 mb-10">
+          <div className="flex-col mr-11 items-center text-sm">
+            <div className="bg-white object-cover rounded-full p-1 m-1">
               <img src={PF + "indonesia-flag.png"}></img>
             </div>
             <p>Indonesia</p>
           </div>
-          <div className="flex-col mr-11 flex items-center">
-            <div className="bg-white object-cover rounded-full p-3">
+          <div className="flex-col mr-11 flex items-center text-sm">
+            <div className="bg-white object-cover rounded-full p-1 m-1">
               <img src={PF + "usa-flag.png"}></img>
             </div>
             <p>Western</p>
           </div>
-          <div className="flex-col mr-11 items-center flex">
-            <div className="bg-white object-cover rounded-full p-3">
+          <div className="flex-col mr-11 items-center flex text-sm">
+            <div className="bg-white object-cover rounded-full p-1 m-1">
               <img src={PF + "china-flag.png"}></img>
             </div>
             <p>China</p>
           </div>
-          <div className="flex-col mr-11 items-center flex">
-            <div className="bg-white object-cover rounded-full p-3">
+          <div className="flex-col items-center flex text-sm">
+            <div className="bg-white object-cover rounded-full p-1 m-1">
               <img src={PF + "korea-flag.png"}></img>
             </div>
             <p>Korean</p>
           </div>
         </div>
-        <div>
-          <div className=" flex flex-col bg-white rounded-lg w-[65%] mx-auto h-[48vh] shadow-md ">
-            <div className="md:px-9 py-3 px-14 ">
+        
+        <div className="bg-cream">
+          <div className="bg-white rounded-lg mx-20 mb-10">
+            <div className="px-5 py-3">
               <p>Top Picks</p>
 
-              <div className="py-2 flex justify-between   ">
-                {rowRecipes ? (
-                  rowRecipes.map((result, index) => {
-                    if (result.ingredients == "rumput")
-                      return (
-                        <div key={index} className="">
-                          <Link to="/detail">
-                            <button>
-                              <img
-                                src={
-                                  result.img
-                                    ? PF + result.img
-                                    : PF + "disney.jpg"
-                                }
-                                alt="disney"
-                                className="w-44 h-44 object-cover rounded-md "
-                              />
-                            </button>
-                          </Link>
+              <div className="wrapper">
+                <div className="py-2 flex justify-between">
+                  {rowRecipes ? (
+                    rowRecipes.map((result, index) => {
+                      if (result.ingredients === "rumput")
+                        return (
+                          <div key={index} className="">
+                            <Link to="/detail">
+                              <button>
+                                <img
+                                  src={
+                                    result.img
+                                      ? PF + result.img
+                                      : PF + "disney.jpg"
+                                  }
+                                  alt="disney"
+                                  className="w-44 h-44 object-cover rounded-md mr-5"
+                                />
+                              </button>
+                            </Link>
 
-                          <p className="text-md font-medium">{result.title}</p>
-                          <p className="text-sm">by @{result.userId}</p>
-                        </div>
-                      );
-                  })
-                ) : (
-                  <CircularProgress />
-                )}
+                            <p className="text-md font-medium">{result.title}</p>
+                            <p className="text-sm">by @{result.userId}</p>
+                          </div>
+                        );
+                    })
+                  ) : (
+                    <CircularProgress />
+                  )}
 
-                {/* <img
-                  src={PF + "disney.jpg"}
-                  alt="disney"
-                  className="w-44 h-44 object-cover rounded-md "
-                />
-                <img
-                  src={PF + "patience.jpg"}
-                  alt="disney"
-                  className="w-44 h-44 object-cover rounded-md "
-                />
-                <img
-                  src={PF + "akkah.jpg"}
-                  alt="soul"
-                  className="w-44 h-44 object-cover rounded-md "
-                />
-                <img
-                  src={PF + "akkah.jpg"}
-                  alt="soul"
-                  className="w-44 h-44 object-cover rounded-md "
-                /> */}
+                  {/* <img
+                    src={PF + "disney.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md "
+                  />
+                  <img
+                    src={PF + "patience.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md "
+                  />
+                  <img
+                    src={PF + "akkah.jpg"}
+                    alt="soul"
+                    className="w-44 h-44 object-cover rounded-md "
+                  />
+                  <img
+                    src={PF + "akkah.jpg"}
+                    alt="soul"
+                    className="w-44 h-44 object-cover rounded-md "
+                  /> */}
+                </div>
               </div>
             </div>
           </div>
-          <div className=" flex flex-col bg-white rounded-lg w-[65%] mx-auto h-[42vh] shadow-md my-7">
-            <div className="md:px-9 py-3 px-14">
+          
+          <div className="bg-white rounded-lg mx-20 mb-10">
+            <div className="px-5 py-3">
               <p>Our recommendations</p>
-              <div className="py-2 flex justify-between">
-                <img
-                  src={PF + "disney.jpg"}
-                  alt="disney"
-                  className="w-44 h-44 object-cover rounded-md  "
-                />
 
-                <img
-                  src={PF + "disney.jpg"}
-                  alt="disney"
-                  className="w-44 h-44 object-cover rounded-md "
-                />
-                <img
-                  src={PF + "disney.jpg"}
-                  alt="disney"
-                  className="w-44 h-44 object-cover rounded-md "
-                />
-                <img
-                  src={PF + "disney.jpg"}
-                  alt="disney"
-                  className="w-44 h-44 object-cover rounded-md "
-                />
+              <div className="wrapper">
+                <div className="py-2 flex justify-between">
+                  <Link to="/baca">
+                  <img
+                    src={PF + "disney.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md mr-5"
+                  />
+                  </Link>
+
+                  <img
+                    src={PF + "disney.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md mr-5"
+                  />
+                  <img
+                    src={PF + "disney.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md mr-5"
+                  />
+                  <img
+                    src={PF + "disney.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md mr-5"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="bg-white rounded-lg mx-20 mb-10">
+            <div className="px-5 py-3">
+              <p>Beginer recipe</p>
+
+              <div className="wrapper">
+                <div className="py-2 flex justify-between">
+                  <Link to="/baca">
+                  <img
+                    src={PF + "disney.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md mr-5"
+                  />
+                  </Link>
+
+                  <img
+                    src={PF + "disney.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md mr-5"
+                  />
+                  <img
+                    src={PF + "disney.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md mr-5"
+                  />
+                  <img
+                    src={PF + "disney.jpg"}
+                    alt="disney"
+                    className="w-44 h-44 object-cover rounded-md mr-5"
+                  />
+                </div>
               </div>
             </div>
           </div>
