@@ -254,8 +254,9 @@ const Home = (props) => {
               </div>
             </div>
           </div>
-          <div>
-            <span className="pl-28  font-bold">All For You</span>
+
+          <div className="bg-white rounded-lg mx-20 mb-10">
+            <p className="text-center font-bold px-5 py-6">All For You</p>
             <Grid
               container
               spacing={{ xs: 2, md: 3 }}
@@ -266,7 +267,7 @@ const Home = (props) => {
                   <Grid item xs={2} sm={4} md={4} key={index}>
                     <div
                       key={result._id}
-                      className="mx-auto items-center flex flex-col"
+                      className="mx-auto items-center flex flex-col pb-8"
                     >
                       <Link to={"/baca/" + result._id}>
                         <button>

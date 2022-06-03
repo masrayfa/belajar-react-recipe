@@ -81,7 +81,7 @@ const Modal = () => {
               <input type="text" className="outline-none" ref={titleForm} />
             </div>
             <div className="flex flex-col mb-3 w-full justify-center">
-              <label htmlFor="" className="form-label inline-block mb-2 text-sm">
+              <label htmlFor="" className="form-label inline-block text-sm">
                 Upload Photos
               </label>
               <input
@@ -106,7 +106,7 @@ const Modal = () => {
             </div>
             <div className="flex flex-col text-sm">
               <label htmlFor="">Bahan</label>
-              <textarea className="outline-none" ref={ingredientsForm} />
+              <textarea className="outline-none h-10 resize-none wrapper" ref={ingredientsForm} />
             </div>
             <div className="flex flex-col text-sm">
               <label htmlFor="">Cara Membuat</label>
