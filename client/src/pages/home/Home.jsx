@@ -27,15 +27,18 @@ const Home = (props) => {
       const response = await axios.get(
         "http://localhost:7000/api/posts/feed/all"
       );
-
-      console.log("Row Recipes: " + rowRecipes);
+      
       setRowRecipes(response.data);
-      console.log(response.data);
+      
     };
 
     fetchAPI();
   }, []);
 
+  const logOutHandler = () => {
+    window.location.reload();
+  };
+  
   const categoriesIcon = 4;
 
   return (
@@ -59,7 +62,10 @@ const Home = (props) => {
           ) : null}
 
           {user ? (
-            <button className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink">
+            <button
+              className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink"
+              onClick={logOutHandler}
+            >
               Log Out
             </button>
           ) : (
@@ -71,9 +77,11 @@ const Home = (props) => {
           )}
 
           {user ? (
-            <div className="text-md py-1 px-4 text-black font-semibold">
-              {user.username}
-            </div>
+            <Link to={"/profile/" + user._id}>
+              <div className="bg-pink text-md py-1 px-4 text-white font-semibold rounded-full">
+                {user.username}
+              </div>
+            </Link>
           ) : (
             <Link to="/login">
               <button className="bg-pink text-md py-1 px-4 text-white font-semibold rounded-full border-2 border-pink">
