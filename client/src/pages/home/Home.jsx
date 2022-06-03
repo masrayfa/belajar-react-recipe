@@ -39,7 +39,7 @@ const Home = (props) => {
   const categoriesIcon = 4;
 
   return (
-    <div className="bg-cream h-screen w-screen overflow-visible">
+    <div className="overflow-visible">
       <header className="flex justify-between items-center py-3 px-20 border-b-2 bg-white">
         <Link to="/">
           <div className="font-bowlby text-3xl text-pink font-black">
@@ -71,7 +71,7 @@ const Home = (props) => {
           )}
 
           {user ? (
-            <div className="bg-pink text-md py-1 px-4 text-white font-semibold rounded-full">
+            <div className="text-md py-1 px-4 text-black font-semibold">
               {user.username}
             </div>
           ) : (
@@ -124,7 +124,7 @@ const Home = (props) => {
           </div>
         </div>
 
-        <div className="bg-cream">
+        <div>
           <div className="bg-white rounded-lg mx-20 mb-10">
             <div className="px-5 py-3">
               <p>Top Picks</p>
@@ -247,6 +247,10 @@ const Home = (props) => {
         </div>
         <Modal />
       </main>
+
+      <div className="mt-20 py-3 px-20 border-t-2 bg-pink">
+        <p className="text-black text-xs">&copy; 2022 Kelompok 3 RPL</p>
+      </div>
     </div>
   );
 };

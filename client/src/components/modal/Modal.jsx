@@ -6,6 +6,7 @@ import { modalState } from "../../atoms/modalAtom";
 import { Collapse } from "@mui/material";
 import { AuthContext } from "../../context/AuthContext";
 import axios from "axios";
+import "./modal.css";
 
 const Modal = () => {
   const [showModal, setShowModal] = useRecoilState(modalState);
@@ -63,11 +64,11 @@ const Modal = () => {
         className="fixed  !top-7 left-0 right-0 z-50 mx-auto w-full max-w-5xl overflow-hidden
          scrollbar-hide outline-none"
       >
-        <div className="flex flex-col mx-auto  items-center space-y-4 py-8 bg-[#f6eedf] rounded-md w-[55vw] h-[80vh]">
-          <div className="flex justify-between space-x-20">
-            <p className="text-[#d63447]">Upload Your Recipe</p>
-            <button className="p-1 rounded-full bg-red-700 border-none">
-              <XIcon className="h-6 w-6 text-white" onClick={handleClose} />
+        <div className="px-10 mx-auto items-center space-y-4 py-8 bg-cream rounded-md w-[55vw] h-[92vh]">
+          <div className="flex justify-between">
+            <p className="text-pink text-lg font-bold">Upload Your Recipe</p>
+            <button className="rounded-full bg-pink border-none">
+              <XIcon className="h-6 w-8 text-white" onClick={handleClose} />
             </button>
           </div>
           <form
@@ -75,19 +76,19 @@ const Modal = () => {
             className="space-y-4 flex flex-col "
             onSubmit={uploadHandler}
           >
-            <div className="flex flex-col ">
+            <div className="flex flex-col text-sm">
               <label htmlFor="">Title</label>
               <input type="text" className="outline-none" ref={titleForm} />
             </div>
             <div className="flex flex-col mb-3 w-full justify-center">
-              <label htmlFor="" className="form-label inline-block mb-2 ">
+              <label htmlFor="" className="form-label inline-block mb-2 text-sm">
                 Upload Photos
               </label>
               <input
                 type="file"
                 id="file"
                 accept=".png, .jpeg, .jpg"
-                className=" form-control  block
+                className=" form-control block
                 w-full
                 px-3
                 py-1.5
@@ -96,7 +97,6 @@ const Modal = () => {
                 text-gray-700
                 bg-white bg-clip-padding
                 border border-solid border-gray-300
-                rounded
                 transition
                 ease-in-out
                 m-0
@@ -104,7 +104,7 @@ const Modal = () => {
                 onChange={(e) => setFile(e.target.files[0])}
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col text-sm">
               <label htmlFor="">Bahan</label>
               <input
                 type="text"
@@ -112,12 +112,12 @@ const Modal = () => {
                 ref={ingredientsForm}
               />
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col text-sm">
               <label htmlFor="">Cara Membuat</label>
-              <textarea className="outline-none" ref={stepsForm}></textarea>
+              <textarea className="outline-none h-40 resize-none wrapper" ref={stepsForm}></textarea>
             </div>
             <button
-              className="p-3 bg-[#d63447] w-20 rounded-md h-11 items-center justify-center mx-auto text-white"
+              className="p-3 bg-[#d63447] w-40 rounded-md h-11 items-center justify-center mx-auto text-white text-md font-bold"
               type="submit"
             >
               Upload

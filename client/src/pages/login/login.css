@@ -1,15 +1,68 @@
+@import url("https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap");
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  font-family: "Montserrat", sans-serif;
+}
+
+.font-bowlby {
+  font-family: "Bowlby One SC", cursive;
+}
+
+.text-pink {
+  color: #d63447;
+}
+
+.bg-pink {
+  background-color: #d63447;
+}
+
+.bg-cream {
+  background-color: #f6eedf;
+}
+
+.border-pink {
+  border-color: #d63447;
+}
+
+.wrapper {
+  display: flex;
+  overflow: scroll;
+}
+
+.wrapper::-webkit-scrollbar {
+  width: 0;
+}
+
+.square {
+  min-width: 120px;
+  height: 150px;
+  line-height: 110px;
+  border-radius: 20px;
+  object-fit: cover;
+  margin-right: 10px;
+}
+
+.textEllipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
 .login {
   width: 100vw;
   height: 100vh;
-  background-color: #f0f2f5;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .loginWrapper {
-  width: 70%;
-  height: 70%;
+  width: 90%;
+  height: 90%;
 }
 
 .loginLeft,
@@ -20,13 +73,6 @@
   justify-content: center;
 }
 
-.loginLogo {
-  font-size: 36px;
-  font-weight: 800;
-  color: #e78ea9;
-  margin-bottom: 10px;
-}
-
 .loginDesc {
   font-size: 22px;
 }
@@ -34,7 +80,7 @@
 .loginBox {
   height: 300px;
   padding: 20px;
-  background-color: #e78ea9;
+  background-color: #d63447;
   border-radius: 10px;
   display: flex;
   flex-direction: column;
@@ -42,7 +88,7 @@
 }
 
 .loginInput {
-  height: 50px;
+  height: 40px;
   border-radius: 10px;
   font-size: 18px;
   padding-left: 20px;
@@ -53,14 +99,13 @@
 }
 
 .loginButton {
-  height: 50px;
+  height: 40px;
   border-radius: 10px;
   border: none;
   background-color: white;
-  color: #e78ea9;
-  font-size: 20px;
-  font-weight: 500;
-  cursor: pointer;
+  color: #d63447;
+  font-size: 18px;
+  font-weight: 400px;
 }
 
 .loginButton:focus {

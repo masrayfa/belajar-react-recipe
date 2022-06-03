@@ -35,16 +35,17 @@ const Register = () => {
   console.log(user);
   return (
     <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-brown">
-      <div className="max-w-md w-full space-y-8">
+      <div className="w-full space-y-8">
         <div>
-          <h1 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h1 className="font-bowlby text-4xl text-pink">
             Cookedge
           </h1>
-          <h2 className="mt-6 text-center text-2xl font-normal text gray-700">
+          <h2 className="mt-10 text-center text-md text-black font-bold">
             Sign up to your account
           </h2>
         </div>
-        <form action="#" className="mt-8 space-y-6" onSubmit={handleClick}>
+        <div className="w- full flex justify-center">
+        <form action="#" className="space-y-2" onSubmit={handleClick}>
           <input type="hidden" name="remember" defaultValue="true" />
           <div className="rounded-d shadow-sm -space-y-px">
             <div>
@@ -55,7 +56,7 @@ const Register = () => {
                 type="text"
                 autoComplete="text"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-red-200 focus:border-red-200 focus:z-10 sm:text-sm"
                 placeholder="Fullname"
                 ref={fullname}
               />
@@ -68,7 +69,7 @@ const Register = () => {
                 type="text"
                 autoComplete="text"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-red-200 focus:border-red-200 focus:z-10 sm:text-sm"
                 placeholder="Username"
                 ref={username}
               />
@@ -83,7 +84,7 @@ const Register = () => {
                 name="email"
                 autoComplete="email"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-red-200 focus:border-red-200 focus:z-10 sm:text-sm"
                 placeholder="Email address"
                 ref={email}
               />
@@ -98,7 +99,7 @@ const Register = () => {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900  focus:outline-none focus:ring-red-200 focus:border-red-200 focus:z-10 sm:text-sm"
                 placeholder="Password"
                 minLength={6}
                 ref={password}
@@ -112,14 +113,14 @@ const Register = () => {
                 type="password"
                 autoComplete="current-password"
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-red-200 focus:border-red-200 focus:z-10 sm:text-sm"
                 placeholder="Password Again"
                 minLength={6}
                 ref={passwordAgain}
               />
             </div>
-            <div className="flex items-center justify-between">
-              <div className="mt-8 flex items-center">
+            <div className="flex items-center justify-between text-sm space-x-10">
+              <div className="mt-8 flex items-center text-sm">
                 <input
                   id="remember-me"
                   name="remember-me"
@@ -137,7 +138,7 @@ const Register = () => {
               <div className="text-sm mt-8">
                 <a
                   href="#"
-                  className="font-medium text-indigo-600 hover:text-indigo-500"
+                  className="text-sm text-pink hover:underline"
                 >
                   Forgot your password?
                 </a>
@@ -147,20 +148,21 @@ const Register = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             >
               <span className="absolute left-0 inset-y-0 flex items-center pl-3"></span>
               Create new account
             </button>
             <Link to="/login">
-              <div className=" transition text-m mt-8 justify-center items-center mx-auto flex cursor-pointer hover:bg-indigo-200 w-32 rounded-md h-11">
-                <span className="font-medium  transition text-indigo-600  text-center items-center justify-center ">
-                  Log in account
+              <div className=" transition justify-center mt-2 items-center mx-auto flex cursor-pointer hover:underline">
+                <span className="text-sm transition text-pink text-center items-center justify-center ">
+                  Log in
                 </span>
               </div>
             </Link>
           </div>
         </form>
+        </div>
       </div>
     </div>
   );

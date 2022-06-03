@@ -22,10 +22,13 @@ const Login = () => {
   return (
     <div className="login">
       <div className="loginWrapper">
-        <h3 className="loginLogo">Cookedge</h3>
+        <h3 className="font-bowlby text-4xl text-pink">Cookedge</h3>
         <div className="loginLeft"></div>
-        <div className="loginRight justify-center items-center mt-12">
-          <form className="loginBox w-1/3 " onSubmit={handleClick}>
+        <div className="loginRight justify-center items-center mt-20">
+          <form className="loginBox text-sm w-1/3 " onSubmit={handleClick}>
+            <h2 className="text-center text-lg text-white font-bold">
+              Sign up to your account
+            </h2>
             <input
               placeholder="email"
               type="email"
@@ -40,14 +43,14 @@ const Login = () => {
               className="loginInput bg-transparent placeholder-white text-white"
               ref={password}
             />
-            <button className="loginButton" type="submit">
-              {isFetching ? "Loading" : "Log in"}
+            <button className="loginButton text-md font-bold" type="submit">
+              {isFetching ? "Loading" : "Log In"}
             </button>
             <div className="flex items-center justify-center">
               <span className="loginForgot mx-3">Forgot Password</span>
               <Link to="/register">
                 <span className="loginRegisterButton hover:underline">
-                  Sign Up account
+                  Sign Up
                 </span>
               </Link>
             </div>
