@@ -59,9 +59,11 @@ const Home = (props) => {
           ) : null}
 
           {user ? (
-            <button className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink">
-              Log Out
-            </button>
+            <Link to="/profile">
+              <div className="text-md py-1 px-4 text-black font-semibold">
+                {user.username}
+              </div>
+            </Link>
           ) : (
             <Link to="/register">
               <button className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink">
@@ -71,9 +73,9 @@ const Home = (props) => {
           )}
 
           {user ? (
-            <div className="text-md py-1 px-4 text-black font-semibold">
-              {user.username}
-            </div>
+            <button className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink">
+              Log Out
+            </button>
           ) : (
             <Link to="/login">
               <button className="bg-pink text-md py-1 px-4 text-white font-semibold rounded-full border-2 border-pink">
@@ -243,46 +245,6 @@ const Home = (props) => {
                 </div>
               </div>
             </div>
-          </div>
-          <div>
-            <Grid
-              container
-              spacing={{ xs: 2, md: 3 }}
-              columns={{ xs: 4, sm: 8, md: 12 }}
-            >
-              {rowRecipes ? (
-                rowRecipes.map((result, index) => (
-                  <Grid item xs={2} sm={4} md={4} key={index}>
-                    <div
-                      key={result._id}
-                      className="mx-auto items-center flex flex-col"
-                    >
-                      <Link to={"/baca/" + result._id}>
-                        <button>
-                          <img
-                            src={
-                              result.img
-                                ? PF + result.img
-                                : PF + "default_food_img.webp"
-                            }
-                            alt="disney"
-                            className="w-44 h-44 object-cover rounded-md mr-5"
-                          />
-                        </button>
-                      </Link>
-                      <p className="text-md font-medium max-w-md ">
-                        {result.title}
-                      </p>
-                      <p className="textEllipsis text-sm">
-                        by @{result.userId}
-                      </p>
-                    </div>
-                  </Grid>
-                ))
-              ) : (
-                <CircularProgress />
-              )}
-            </Grid>
           </div>
         </div>
         <Modal />
