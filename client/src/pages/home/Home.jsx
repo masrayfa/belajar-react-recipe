@@ -8,7 +8,7 @@ import { detailState } from "../../atoms/detailAtom";
 import axios from "axios";
 import { modalState } from "../../atoms/modalAtom";
 import Modal from "../../components/modal/Modal";
-import { CircularProgress } from "@mui/material";
+import { CircularProgress, Grid } from "@mui/material";
 import "./home.css";
 import { useParams } from "react-router-dom";
 
@@ -243,6 +243,46 @@ const Home = (props) => {
                 </div>
               </div>
             </div>
+          </div>
+          <div>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              {rowRecipes ? (
+                rowRecipes.map((result, index) => (
+                  <Grid item xs={2} sm={4} md={4} key={index}>
+                    <div
+                      key={result._id}
+                      className="mx-auto items-center flex flex-col"
+                    >
+                      <Link to={"/baca/" + result._id}>
+                        <button>
+                          <img
+                            src={
+                              result.img
+                                ? PF + result.img
+                                : PF + "default_food_img.webp"
+                            }
+                            alt="disney"
+                            className="w-44 h-44 object-cover rounded-md mr-5"
+                          />
+                        </button>
+                      </Link>
+                      <p className="text-md font-medium max-w-md ">
+                        {result.title}
+                      </p>
+                      <p className="textEllipsis text-sm">
+                        by @{result.userId}
+                      </p>
+                    </div>
+                  </Grid>
+                ))
+              ) : (
+                <CircularProgress />
+              )}
+            </Grid>
           </div>
         </div>
         <Modal />

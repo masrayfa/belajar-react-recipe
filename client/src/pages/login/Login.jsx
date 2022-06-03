@@ -4,6 +4,7 @@ import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { Muimodal } from "@mui/material/Modal";
+import { CircularProgress } from "@mui/material";
 
 const Login = () => {
   const email = useRef();
