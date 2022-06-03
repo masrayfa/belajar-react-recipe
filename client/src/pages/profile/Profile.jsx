@@ -22,9 +22,9 @@ const Profile = () => {
             <div className="px-10">
               <div className="mb-10 text-center">
                 <h2 className="text-center text-xl text-white font-bold">
-                  {user.fullname}
+                  {user.fullname ? user.fullname : "fullname"}
                 </h2>
-                <p className="text-white w-1/2 mx-auto">@{user.username}</p>
+                <p className="text-white w-1/2 mx-auto">@{user.username ? user.username : "username"}</p>
               </div>
               <div className="grid">
                 <div className="space-y-8 text-center">
@@ -61,14 +61,14 @@ const Profile = () => {
                 <div className="h-8 aspect-[1/10]">
                   <input
                     type="text"
-                    placeholder="Your name"
+                    placeholder={user.fullname ? user.fullname : "fullname"}
                     className="h-8 pt-0 px-3 bg-pink text-white placeholder-white"
                   />
                 </div>
                 <div className="h-8 aspect-[1/10]">
                   <input
                     type="text"
-                    placeholder="Your username"
+                    placeholder={user.username ? user.username : "username"}
                     className="h-8 pt-0 px-3 bg-pink text-white placeholder-white"
                   />
                 </div>
@@ -81,7 +81,7 @@ const Profile = () => {
                 <div className="h-8 aspect-[1/10]">
                   <input
                     type="email"
-                    placeholder="Your email"
+                    placeholder={user.email ? user.email : "fullname"}
                     className="h-8 pt-0 px-3 bg-pink text-white placeholder-white"
                   />
                 </div>
@@ -140,14 +140,14 @@ const Profile = () => {
               <div className="h-8 aspect-[1/10]">
                 <input
                   type="text"
-                  placeholder={user.fullname}
+                  placeholder={user.fullname ? user.fullname : "fullname"}
                   className="h-8 pt-0 ml-3 px-3 bg-red-600 text-white placeholder-white"
                 />
               </div>
               <div className="h-8 aspect-[1/10]">
                 <input
                   type="text"
-                  placeholder={user.username}
+                  placeholder={user.username ? user.username : "username"}
                   className="h-8 pt-0 ml-3 px-3 bg-red-600 text-white placeholder-white"
                 />
               </div>
