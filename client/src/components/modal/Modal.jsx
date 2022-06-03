@@ -106,11 +106,7 @@ const Modal = () => {
             </div>
             <div className="flex flex-col">
               <label htmlFor="">Bahan</label>
-              <input
-                type="text"
-                className="outline-none"
-                ref={ingredientsForm}
-              />
+              <textarea className="outline-none" ref={ingredientsForm} />
             </div>
             <div className="flex flex-col">
               <label htmlFor="">Cara Membuat</label>

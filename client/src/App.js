@@ -14,6 +14,7 @@ import { useContext } from "react";
 import { AuthContext } from "./context/AuthContext";
 import { RecoilRoot } from "recoil";
 import Detail from "./pages/detail/Detail";
+import Profile from "./pages/profile/Profile";
 
 function App() {
   const { user } = useContext(AuthContext);
@@ -33,12 +34,13 @@ function App() {
           />
           <Route
             path="/baca/:id"
-            element={user ? <Baca /> : <Navigate to="/" />}
+            element={user ? <Baca /> : <Navigate to="/login" />}
           />
           <Route
             path="/detail"
             element={user ? <Navigate to="/" /> : <Detail />}
           />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
       </Router>
     </RecoilRoot>

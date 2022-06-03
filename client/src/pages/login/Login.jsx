@@ -4,6 +4,7 @@ import { loginCall } from "../../apiCalls";
 import { AuthContext } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import { Muimodal } from "@mui/material/Modal";
+import { CircularProgress } from "@mui/material";
 
 const Login = () => {
   const email = useRef();
@@ -41,7 +42,7 @@ const Login = () => {
               ref={password}
             />
             <button className="loginButton" type="submit">
-              {isFetching ? "Loading" : "Log in"}
+              {isFetching ? <CircularProgress /> : "Log in"}
             </button>
             <div className="flex items-center justify-center">
               <span className="loginForgot mx-3">Forgot Password</span>
