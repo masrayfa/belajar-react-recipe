@@ -40,7 +40,7 @@ function App() {
             path="/detail"
             element={user ? <Navigate to="/" /> : <Detail />}
           />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/:id" element={<Profile />} />
         </Routes>
       </Router>
     </RecoilRoot>
