@@ -96,10 +96,14 @@ const Home = (props) => {
           <div className="relative z-10 bg-pink w-52 mx-20 p-3 top-52">
             <p className="text-xl text-white font-bold">{recipeDetail.title}</p>
             <p className="textEllipsis text-md text-white ">
-              {recipeDetail.userId}
+              {recipeDetail.username
+                ? recipeDetail.username
+                : recipeDetail.userId}
             </p>
             <p className="textEllipsis text-sm text-white ">
-              @{recipeDetail.userId}
+              @{recipeDetail.username
+                ? recipeDetail.username
+                : recipeDetail.userId}
             </p>
           </div>
           <div className="bg-white relative z-10 top-56 mx-52 border-2">
