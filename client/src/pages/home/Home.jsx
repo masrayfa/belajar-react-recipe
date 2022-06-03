@@ -61,7 +61,7 @@ const Home = (props) => {
           ) : null}
 
           {user ? (
-            <Link to="/profile">
+            <Link to={"/profile/"+user._id}>
               <div className="text-md py-1 px-4 text-black font-semibold">
                 {user.username}
               </div>
