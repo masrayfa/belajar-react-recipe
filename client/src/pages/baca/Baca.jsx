@@ -28,17 +28,16 @@ const Home = (props) => {
         `http://localhost:7000/api/posts/feed/${params.id}`
       );
 
-      // .then((response) => {
-      //   // console.log(response.data[0].tools);
-      // });
-      // console.log("Row Recipes: " + rowRecipes);
-      // setRowRecipes(response.data);
+      // console.log(response.data);
       setRecipeDetail(response.data);
-      console.log(response.data);
     };
 
     fetchAPI();
   }, []);
+
+  const logOutHandler = () => {
+    window.location.reload();
+  };
 
   const categoriesIcon = 4;
 
@@ -52,7 +51,10 @@ const Home = (props) => {
         </Link>
         <div className="justify-center space-x-5 items-center flex">
           {user ? (
-            <button className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink">
+            <button
+              className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink"
+              onClick={logOutHandler}
+            >
               Log Out
             </button>
           ) : (
@@ -64,9 +66,11 @@ const Home = (props) => {
           )}
 
           {user ? (
-            <div className="bg-pink text-md py-1 px-4 text-white font-semibold rounded-full">
-              {user.username}
-            </div>
+            <Link to={"/profile/" + user._id}>
+              <div className="bg-pink text-md py-1 px-4 text-white font-semibold rounded-full">
+                {user.username}
+              </div>
+            </Link>
           ) : (
             <Link to="/login">
               <button className="bg-pink text-md py-1 px-4 text-white font-semibold rounded-full border-2 border-pink">
