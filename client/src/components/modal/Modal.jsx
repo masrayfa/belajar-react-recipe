@@ -27,6 +27,7 @@ const Modal = () => {
     e.preventDefault();
     const newPost = {
       userId: user._id,
+      username: user.username,
       title: titleForm.current.value,
       steps: stepsForm.current.value,
       ingredients: ingredientsForm.current.value,
