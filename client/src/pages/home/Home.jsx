@@ -27,9 +27,8 @@ const Home = (props) => {
       const response = await axios.get(
         "http://localhost:7000/api/posts/feed/all"
       );
-      
+
       setRowRecipes(response.data);
-      
     };
 
     fetchAPI();
@@ -38,7 +37,7 @@ const Home = (props) => {
   const logOutHandler = () => {
     window.location.reload();
   };
-  
+
   const categoriesIcon = 4;
 
   return (
@@ -141,29 +140,30 @@ const Home = (props) => {
                 <div className="py-2 flex justify-between">
                   {rowRecipes ? (
                     rowRecipes.map((result, index) => {
-                      return (
-                        <div key={result._id} className="">
-                          <Link to={"/baca/" + result._id}>
-                            <button>
-                              <img
-                                src={
-                                  result.img
-                                    ? PF + result.img
-                                    : PF + "default_food_img.webp"
-                                }
-                                alt="disney"
-                                className="w-44 h-44 object-cover rounded-md mr-5"
-                              />
-                            </button>
-                          </Link>
-                          <p className="text-md font-medium max-w-md ">
-                            {result.title}
-                          </p>
-                          <p className="textEllipsis text-sm">
-                            by @{result.userId}
-                          </p>
-                        </div>
-                      );
+                      if (result.label == "top_picks")
+                        return (
+                          <div key={result._id} className="">
+                            <Link to={"/baca/" + result._id}>
+                              <button>
+                                <img
+                                  src={
+                                    result.img
+                                      ? PF + result.img
+                                      : PF + "default_food_img.webp"
+                                  }
+                                  alt="disney"
+                                  className="w-44 h-44 object-cover rounded-md mr-5"
+                                />
+                              </button>
+                            </Link>
+                            <p className="text-md font-medium max-w-md ">
+                              {result.title}
+                            </p>
+                            <p className="textEllipsis text-sm">
+                              by @{result.userId}
+                            </p>
+                          </div>
+                        );
                     })
                   ) : (
                     <CircularProgress />
@@ -181,29 +181,30 @@ const Home = (props) => {
                 <div className="py-2 flex justify-between">
                   {rowRecipes ? (
                     rowRecipes.map((result, index) => {
-                      return (
-                        <div key={result._id} className="">
-                          <Link to={"/baca/" + result._id}>
-                            <button>
-                              <img
-                                src={
-                                  result.img
-                                    ? PF + result.img
-                                    : PF + "default_food_img.webp"
-                                }
-                                alt="disney"
-                                className="w-44 h-44 object-cover rounded-md mr-5"
-                              />
-                            </button>
-                          </Link>
-                          <p className="text-md font-medium max-w-md ">
-                            {result.title}
-                          </p>
-                          <p className="textEllipsis text-sm">
-                            by @{result.userId}
-                          </p>
-                        </div>
-                      );
+                      if (result.label == "recommended")
+                        return (
+                          <div key={result._id} className="">
+                            <Link to={"/baca/" + result._id}>
+                              <button>
+                                <img
+                                  src={
+                                    result.img
+                                      ? PF + result.img
+                                      : PF + "default_food_img.webp"
+                                  }
+                                  alt="food_image"
+                                  className="w-44 h-44 object-cover rounded-md mr-5"
+                                />
+                              </button>
+                            </Link>
+                            <p className="text-md font-medium max-w-md ">
+                              {result.title}
+                            </p>
+                            <p className="textEllipsis text-sm">
+                              by @{result.userId}
+                            </p>
+                          </div>
+                        );
                     })
                   ) : (
                     <CircularProgress />
@@ -215,35 +216,36 @@ const Home = (props) => {
 
           <div className="bg-white rounded-lg mx-20 mb-10">
             <div className="px-5 py-3">
-              <p>Beginer recipe</p>
+              <p>Beginner recipe</p>
 
               <div className="wrapper">
                 <div className="py-2 flex justify-between">
                   {rowRecipes ? (
                     rowRecipes.map((result, index) => {
-                      return (
-                        <div key={result._id} className="">
-                          <Link to={"/baca/" + result._id}>
-                            <button>
-                              <img
-                                src={
-                                  result.img
-                                    ? PF + result.img
-                                    : PF + "default_food_img.webp"
-                                }
-                                alt="disney"
-                                className="w-44 h-44 object-cover rounded-md mr-5"
-                              />
-                            </button>
-                          </Link>
-                          <p className="text-md font-medium max-w-md ">
-                            {result.title}
-                          </p>
-                          <p className="textEllipsis text-sm">
-                            by @{result.userId}
-                          </p>
-                        </div>
-                      );
+                      if (result.label == "beginner")
+                        return (
+                          <div key={result._id} className="">
+                            <Link to={"/baca/" + result._id}>
+                              <button>
+                                <img
+                                  src={
+                                    result.img
+                                      ? PF + result.img
+                                      : PF + "default_food_img.webp"
+                                  }
+                                  alt="food_image"
+                                  className="w-44 h-44 object-cover rounded-md mr-5"
+                                />
+                              </button>
+                            </Link>
+                            <p className="text-md font-medium max-w-md ">
+                              {result.title}
+                            </p>
+                            <p className="textEllipsis text-sm">
+                              by @{result.userId}
+                            </p>
+                          </div>
+                        );
                     })
                   ) : (
                     <CircularProgress />
@@ -253,6 +255,7 @@ const Home = (props) => {
             </div>
           </div>
           <div>
+            <span className="pl-28  font-bold">All For You</span>
             <Grid
               container
               spacing={{ xs: 2, md: 3 }}
@@ -273,7 +276,7 @@ const Home = (props) => {
                                 ? PF + result.img
                                 : PF + "default_food_img.webp"
                             }
-                            alt="disney"
+                            alt="food_image"
                             className="w-44 h-44 object-cover rounded-md mr-5"
                           />
                         </button>
