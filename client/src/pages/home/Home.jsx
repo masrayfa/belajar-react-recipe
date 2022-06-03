@@ -28,13 +28,15 @@ const Home = (props) => {
         "http://localhost:7000/api/posts/feed/all"
       );
 
-      console.log("Row Recipes: " + rowRecipes);
       setRowRecipes(response.data);
-      console.log(response.data);
     };
 
     fetchAPI();
   }, []);
+
+  const logOutHandler = () => {
+    window.location.reload();
+  };
 
   const categoriesIcon = 4;
 
@@ -73,8 +75,11 @@ const Home = (props) => {
           )}
 
           {user ? (
-            <button className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink">
-              Log Out
+            <button
+            className="text-md py-1 px-4 font-semibold rounded-full border-2 border-pink"
+            onClick={logOutHandler}
+            >
+            Log Out
             </button>
           ) : (
             <Link to="/login">
@@ -135,29 +140,30 @@ const Home = (props) => {
                 <div className="py-2 flex justify-between">
                   {rowRecipes ? (
                     rowRecipes.map((result, index) => {
-                      return (
-                        <div key={result._id} className="">
-                          <Link to={"/baca/" + result._id}>
-                            <button>
-                              <img
-                                src={
-                                  result.img
-                                    ? PF + result.img
-                                    : PF + "default_food_img.webp"
-                                }
-                                alt="disney"
-                                className="w-44 h-44 object-cover rounded-md mr-5"
-                              />
-                            </button>
-                          </Link>
-                          <p className="text-md font-medium max-w-md ">
-                            {result.title}
-                          </p>
-                          <p className="textEllipsis text-sm">
-                            by @{result.userId}
-                          </p>
-                        </div>
-                      );
+                      if (result.label == "top_picks")
+                        return (
+                          <div key={result._id} className="">
+                            <Link to={"/baca/" + result._id}>
+                              <button>
+                                <img
+                                  src={
+                                    result.img
+                                      ? PF + result.img
+                                      : PF + "default_food_img.webp"
+                                  }
+                                  alt="disney"
+                                  className="w-44 h-44 object-cover rounded-md mr-5"
+                                />
+                              </button>
+                            </Link>
+                            <p className="text-md font-medium max-w-md ">
+                              {result.title}
+                            </p>
+                            <p className="textEllipsis text-sm">
+                              by @{result.userId}
+                            </p>
+                          </div>
+                        );
                     })
                   ) : (
                     <CircularProgress />
@@ -175,29 +181,30 @@ const Home = (props) => {
                 <div className="py-2 flex justify-between">
                   {rowRecipes ? (
                     rowRecipes.map((result, index) => {
-                      return (
-                        <div key={result._id} className="">
-                          <Link to={"/baca/" + result._id}>
-                            <button>
-                              <img
-                                src={
-                                  result.img
-                                    ? PF + result.img
-                                    : PF + "default_food_img.webp"
-                                }
-                                alt="disney"
-                                className="w-44 h-44 object-cover rounded-md mr-5"
-                              />
-                            </button>
-                          </Link>
-                          <p className="text-md font-medium max-w-md ">
-                            {result.title}
-                          </p>
-                          <p className="textEllipsis text-sm">
-                            by @{result.userId}
-                          </p>
-                        </div>
-                      );
+                      if (result.label == "recommended")
+                        return (
+                          <div key={result._id} className="">
+                            <Link to={"/baca/" + result._id}>
+                              <button>
+                                <img
+                                  src={
+                                    result.img
+                                      ? PF + result.img
+                                      : PF + "default_food_img.webp"
+                                  }
+                                  alt="food_image"
+                                  className="w-44 h-44 object-cover rounded-md mr-5"
+                                />
+                              </button>
+                            </Link>
+                            <p className="text-md font-medium max-w-md ">
+                              {result.title}
+                            </p>
+                            <p className="textEllipsis text-sm">
+                              by @{result.userId}
+                            </p>
+                          </div>
+                        );
                     })
                   ) : (
                     <CircularProgress />
@@ -209,35 +216,36 @@ const Home = (props) => {
 
           <div className="bg-white rounded-lg mx-20 mb-10">
             <div className="px-5 py-3">
-              <p>Beginer recipe</p>
+              <p>Beginner recipe</p>
 
               <div className="wrapper">
                 <div className="py-2 flex justify-between">
                   {rowRecipes ? (
                     rowRecipes.map((result, index) => {
-                      return (
-                        <div key={result._id} className="">
-                          <Link to={"/baca/" + result._id}>
-                            <button>
-                              <img
-                                src={
-                                  result.img
-                                    ? PF + result.img
-                                    : PF + "default_food_img.webp"
-                                }
-                                alt="disney"
-                                className="w-44 h-44 object-cover rounded-md mr-5"
-                              />
-                            </button>
-                          </Link>
-                          <p className="text-md font-medium max-w-md ">
-                            {result.title}
-                          </p>
-                          <p className="textEllipsis text-sm">
-                            by @{result.userId}
-                          </p>
-                        </div>
-                      );
+                      if (result.label == "beginner")
+                        return (
+                          <div key={result._id} className="">
+                            <Link to={"/baca/" + result._id}>
+                              <button>
+                                <img
+                                  src={
+                                    result.img
+                                      ? PF + result.img
+                                      : PF + "default_food_img.webp"
+                                  }
+                                  alt="food_image"
+                                  className="w-44 h-44 object-cover rounded-md mr-5"
+                                />
+                              </button>
+                            </Link>
+                            <p className="text-md font-medium max-w-md ">
+                              {result.title}
+                            </p>
+                            <p className="textEllipsis text-sm">
+                              by @{result.userId}
+                            </p>
+                          </div>
+                        );
                     })
                   ) : (
                     <CircularProgress />
@@ -245,6 +253,47 @@ const Home = (props) => {
                 </div>
               </div>
             </div>
+          </div>
+          <div>
+            <span className="pl-28  font-bold">All For You</span>
+            <Grid
+              container
+              spacing={{ xs: 2, md: 3 }}
+              columns={{ xs: 4, sm: 8, md: 12 }}
+            >
+              {rowRecipes ? (
+                rowRecipes.map((result, index) => (
+                  <Grid item xs={2} sm={4} md={4} key={index}>
+                    <div
+                      key={result._id}
+                      className="mx-auto items-center flex flex-col"
+                    >
+                      <Link to={"/baca/" + result._id}>
+                        <button>
+                          <img
+                            src={
+                              result.img
+                                ? PF + result.img
+                                : PF + "default_food_img.webp"
+                            }
+                            alt="food_image"
+                            className="w-44 h-44 object-cover rounded-md mr-5"
+                          />
+                        </button>
+                      </Link>
+                      <p className="text-md font-medium max-w-md ">
+                        {result.title}
+                      </p>
+                      <p className="textEllipsis text-sm">
+                        by @{result.userId}
+                      </p>
+                    </div>
+                  </Grid>
+                ))
+              ) : (
+                <CircularProgress />
+              )}
+            </Grid>
           </div>
         </div>
         <Modal />
